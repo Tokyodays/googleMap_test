@@ -8,6 +8,15 @@
   figure {
     margin: 0;
     padding: 0;
+    position: relative;
+    figcaption {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      color: white;
+      text-align: right;
+      text-shadow: 0 0 2px #000;
+    }
   }
   a {
     display: block;
