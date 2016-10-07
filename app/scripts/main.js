@@ -10,17 +10,23 @@ $(function(){
     url: "data/mapdata.csv",
     success: function(data){
 
-      var map = new GMaps({
-        el: '#map',
+      var _japanmap = new GMaps({
+        el: '#MAP_JAPAN',
+        lat: 37.8931623,
+        lng: 137.587116,
+        zoom: 5
+      });
+      var _globalmap = new GMaps({
+        el: '#MAP_GLOBAL',
         lat: 35.6931623,
-        lng: 138.587116,
+        lng: 8.587116,
         zoom: 1
       });
-
       var _result = csvjson.csv2json(data, {
     		delim: ","
     	});
-      var _array = [];
+      var _japan_array = [];
+      var _global_array = [];
       for(var i = 0, ileng = _result.rows.length; i < ileng; i++){
         var _temp = _result.rows[i];
         var _content = "";
@@ -29,16 +35,22 @@ $(function(){
           _content += "<figcaption>" + _temp.credit + "</figcaption>";
         }
         _content += '</figure><p>' + _temp.title + '</p></a>';
-        _array.push({
+        var _obj = {
           "lat": Number(_temp["latitude"]),
           "lng": Number(_temp["longitude"]),
           "title": "japan",
           infoWindow: {
             "content": _content
           }
-        })
+        };
+        if(_temp["scale"] == "japan"){
+          _japan_array.push(_obj);
+        } else if(_temp["scale"] == "world"){
+          _global_array.push(_obj);
+        }
       }
-      map.addMarkers(_array);
+      _japanmap.addMarkers(_japan_array);
+      _globalmap.addMarkers(_global_array);
     }
   })
 });
