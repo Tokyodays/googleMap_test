@@ -38,7 +38,7 @@ $(function(){
         var _obj = {
           "lat": Number(_temp["latitude"]),
           "lng": Number(_temp["longitude"]),
-          "title": "japan",
+          "title": _temp.title,
           infoWindow: {
             "content": _content
           }
