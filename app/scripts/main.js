@@ -7,8 +7,12 @@ b+(a+i[h]+a+c):b+(i[h]+c);b=b.slice(0,b.length-1);b+="\n"}return b=b.slice(0,b.l
 
 $(function(){
   $.ajax({
-    url: "data/mapdata.csv",
+    type: 'GET',
+    cache: false,
+    crossDomain: true,
+    url: "http://www.nikkei.com/edit/ns/mapdata.csv",
     success: function(data){
+      console.log(data);
 
       var _japanmap = new GMaps({
         el: '#MAP_JAPAN',
