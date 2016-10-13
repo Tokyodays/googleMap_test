@@ -9,7 +9,15 @@
   width: 100%;
   height: 300px;
 }
-
+@media screen and ( max-width:768px )
+{
+  #MAP_JAPAN {
+    height: 300px;
+  }
+  #MAP_GLOBAL {
+    height: 200px;
+  }
+}
 #MAP_JAPAN,
 #MAP_GLOBAL {
   figure {
